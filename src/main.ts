@@ -1,5 +1,3 @@
-import UtilsNumber from "./lib/number";
-import UtilsRegular from "./lib/regular";
 import UtilsIP, { UtilsIPv4, UtilsIPv6 } from "./lib/IP";
 import UtilsArray, {
     UtilsArrayClone,
@@ -7,7 +5,10 @@ import UtilsArray, {
     UtilsArraySort,
 } from "./lib/array";
 import UtilsLogical from "./lib/logical";
+import UtilsNumber from "./lib/number";
+import UtilsRegular from "./lib/regular";
 import UtilsString from "./lib/string";
+import UtilsWeb from "./lib/web";
 
 const types = [
     "undefined",
@@ -50,6 +51,7 @@ class Utils {
     public readonly IP: UtilsIP;
     public readonly logical: UtilsLogical;
     public readonly string: UtilsString;
+    public readonly web: UtilsWeb;
 
     constructor({
         string = new UtilsString(),
@@ -58,6 +60,7 @@ class Utils {
         logical = new UtilsLogical(),
         array,
         IP: ip,
+        web = new UtilsWeb()
     }: Partial<{
         string: UtilsString;
         number: UtilsNumber;
@@ -65,11 +68,13 @@ class Utils {
         logical: UtilsLogical;
         array: UtilsArray;
         IP: UtilsIP;
+        web: UtilsWeb;
     }> = {}) {
         this.string = string;
         this.number = number;
         this.regular = regular;
         this.logical = logical;
+        this.web = web;
 
         this.array =
             array ||
@@ -164,17 +169,12 @@ class Utils {
 const utils = new Utils();
 
 export {
-    Utils,
-    UtilsNumber,
-    UtilsString,
-    UtilsRegular,
-    UtilsIP,
-    UtilsLogical,
-    UtilsArray,
+    Utils, UtilsArray, UtilsIP,
+    UtilsLogical, UtilsNumber, UtilsRegular, UtilsString
 };
 
-export { UtilsIPv4, UtilsIPv6 };
+    export { UtilsIPv4, UtilsIPv6 };
 
-export { UtilsArrayClone, UtilsArrayNumber, UtilsArraySort };
+    export { UtilsArrayClone, UtilsArrayNumber, UtilsArraySort };
 
 export default utils;
